@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('total_invoice');
             $table->timestamp('date');
-            $table->unsignedBigInteger('id_customer');
+            $table->unsignedBigInteger('id_customer')->unique();
             $table->foreign('id_customer')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
         });
     }

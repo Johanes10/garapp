@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('delivery_people', function (Blueprint $table) {
             $table->id();
             $table->integer('license_number');
-            $table->unsignedBigInteger('id_people');
-            $table->unsignedBigInteger('id_vehicles');
+            $table->unsignedBigInteger('id_people')->unique();
+            $table->unsignedBigInteger('id_vehicles')->unique();
             $table->foreign('id_people')->references('id')->on('people');
             $table->foreign('id_vehicles')->references('id')->on('vehicles');
             $table->timestamps();

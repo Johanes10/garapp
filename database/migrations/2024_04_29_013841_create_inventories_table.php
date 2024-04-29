@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('inventories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_service_products');
-            $table->unsignedBigInteger('id_establishments');
+            $table->unsignedBigInteger('id_service_products')->unique();
+            $table->unsignedBigInteger('id_establishments')->unique();
             $table->foreign('id_service_products')->references('id')->on('service_products')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_establishments')->references('id')->on('establishments')->onDelete('cascade')->onUpdate('cascade');
         });
