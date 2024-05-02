@@ -12,7 +12,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customers= Customer::orderBy('id','desc')->get();
+        return "Customer index";
     }
 
     /**
@@ -20,7 +21,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return "Customers create";
     }
 
     /**
@@ -28,7 +29,7 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

@@ -12,7 +12,7 @@ class OrderDetailController extends Controller
      */
     public function index()
     {
-        //
+        return view('orderdetails.index');
     }
 
     /**
@@ -28,7 +28,14 @@ class OrderDetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated=$request->validate([
+            'quantity'=>'required|integer',
+            'unit_price'=>'required|integer',
+            'subtotal'=>'required|integer',
+        ]);
+        $orderDetails= new OrderDetail();
+        $orderDetails->create($validated);
+        return redirect(route('orderdetails.index'));
     }
 
     /**

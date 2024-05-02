@@ -12,15 +12,16 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
+        $vehicles = Vehicle::orderBy('id', 'desc')->get();
+        return view('vehicles.listar', compact('vehicles'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource.ss
      */
     public function create()
     {
-        //
+        return view('vehicles.create');
     }
 
     /**
@@ -28,7 +29,16 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated=$request->validate([
+        'brand'=>'string|max:255',
+        'model'=>'string|max:255',
+        'year'=>'string|max:255',
+        'number_plate'=>'string|max:6',
+        'type'=>'string|max:255',
+    ]);
+    $vehicle= new Vehicle();
+    $vehicle->create($validated);
+
     }
 
     /**
@@ -36,7 +46,7 @@ class VehicleController extends Controller
      */
     public function show(Vehicle $vehicle)
     {
-        //
+        return view('vehicles.show',compact('vehicle'));
     }
 
     /**

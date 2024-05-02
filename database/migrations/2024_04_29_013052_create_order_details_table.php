@@ -16,9 +16,9 @@ return new class extends Migration
             $table->integer('quantity');
             $table->integer('unit_price');
             $table->integer('subtotal');
-            $table->unsignedBigInteger('id_order')->unique();
-            $table->unsignedBigInteger('id_invoice')->unique();
-            $table->unsignedBigInteger('id_service_products')->unique();
+            $table->unsignedBigInteger('id_order')->unique()->nullable();
+            $table->unsignedBigInteger('id_invoice')->unique()->nullable();
+            $table->unsignedBigInteger('id_service_products')->unique()->nullable();
             $table->timestamps();
             $table->foreign('id_order')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_invoice')->references('id')->on('invoices')->onDelete('cascade')->onUpdate('cascade');

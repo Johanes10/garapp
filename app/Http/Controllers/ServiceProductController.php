@@ -12,7 +12,7 @@ class ServiceProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('serviceproducts.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class ServiceProductController extends Controller
      */
     public function create()
     {
-        //
+       //
     }
 
     /**
@@ -28,7 +28,16 @@ class ServiceProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated= $request->validate([
+            'name'=>'required|string|max:255',
+            'description'=>'required|string|max:255',
+            'price'=>'required|numeric|max:255',
+            'category'=>'required|string|max:255',
+        ]);
+
+        $serviceProduct= new ServiceProduct();
+        $serviceProduct->create($validated);
+        return redirect(route('serviceproducts.index'));
     }
 
     /**

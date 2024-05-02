@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->string('price');
+            $table->decimal('price',10,3);
             $table->string('category');
-            $table->timestamp('date');
+            $table->timestamps();
         });
     }
 

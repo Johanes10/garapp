@@ -12,7 +12,8 @@ class EstablishmentController extends Controller
      */
     public function index()
     {
-        //
+        
+        return view('establishments.index');
     }
 
     /**
@@ -28,9 +29,24 @@ class EstablishmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated= $request->validate([
+            'nit'=>'required|integer',
+            'name_company'=>'required|string|max:255',
+            'address'=>'required|string|max:255',
+            'email'=>'required|string|max:255',
+        ]);
+        $establishments= new Establishment();
+        $establishments->create($validated);
+        return redirect(route('establishments.index'));
     }
-
+//dd($request->all());
+/*$establishments= new Establishment();
+$establishments->nit=$request->nit;
+$establishments->name_company=$request->name_company;
+$establishments->address=$request->address;
+$establishments->email=$request->email;
+$establishments->save();
+return redirect(route('establishments.index'));*/
     /**
      * Display the specified resource.
      */
